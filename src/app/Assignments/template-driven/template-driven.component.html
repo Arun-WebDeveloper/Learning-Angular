@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <!-- Add a Form with the following Inputs (and Validators)
+             1) Mail address (should not be empty and should be an email address)
+             2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+                Set "Advanced" as Default
+             3) A Password field (should not be empty)
+             4) A Submit Button
+  
+             Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+  
+             Upon submitting the form, you should simply print the Value of the Form to the Console.
+             Optionally, display it in your template.
+        -->
+        <legend class="text-center">Sign up</legend>
+        <form (ngSubmit)="onSubmit()" #userDetails="ngForm">
+          <div id="user-info" ngModelGroup="userInfo" #userInfo="ngModelGroup">
+            <div class="form-group">
+              <label for="email">Email-Id</label>
+              <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel">
+              <p class="alert-danger w-75" *ngIf="!email.valid && email.touched">Email is Invalid ? Please enter a valid Email</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-control" ngModel name="password" required #password="ngModel">
+              <p class="alert-danger w-75" *ngIf="!password.valid && password.touched">Password is Invalid ? Please enter a valid Password</p>
+                <div id="showPassword" (click)="toggleShowPassword()">
+                  <input type="checkbox" onclick="myPassword()"> Show Password
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subscription">Subscriptions</label>
+            <select id="subscription" class="form-control" [ngModel]="defaultValue" name="subscription">
+              <option value="basic">Basic</option>
+              <option value="advanced">Advanced</option>
+              <option value="pro">Pro</option>
+            </select>
+            <p class="alert-danger" *ngIf="!userDetails.valid && userDetails.touched">This form is Invalid  Please fill in the above Details!</p>
+          </div>
+         
+          <button class="btn btn-success"  type="submit" [disabled]="!userDetails.valid">Submit</button>
+        </form>
+        <br>
+        <div class="row" *ngIf="submitData">
+          <div class="col-xs-12">
+            <h4>Your Data has been Submitted Successfully!</h4>
+            <p>Email: {{info.Email}}</p>
+            <p>Password: {{info.Password}}</p>
+            <p>Subscription: {{info.Subscription}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
