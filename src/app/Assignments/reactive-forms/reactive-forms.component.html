@@ -23,6 +23,8 @@
               *ngIf="!projectForm.get('userForm.project').valid && projectForm.get('userForm.project').touched">
               <span class="help-block" style="color: red;"
                 *ngIf="projectForm.get('userForm.project').errors['forbidden']">This name is Invalid please try again!</span>
+                <span class="help-block" style="color: red;"
+                *ngIf="projectForm.get('userForm.project').errors['forbiddenNew']">This name is already taken by another user please try again!</span>
               <span class="help-block" style="color: red;"
                 *ngIf="projectForm.get('userForm.project').errors['required']">Please enter Project Name!</span>
             </span>

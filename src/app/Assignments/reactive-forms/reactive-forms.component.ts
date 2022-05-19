@@ -37,7 +37,7 @@ export class ReactiveFormsComponent implements OnInit {
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'TestProject') {
-          resolve({ 'forbidden': true });
+          resolve({ 'forbiddenNew': true });
         } else {
           resolve(null);
         }
