@@ -118,6 +118,9 @@ genders = ['male', 'female'];
       }
     });
   }
+  getControls() {
+    return (<FormArray>this.signupForm.get('hobbies')).controls;
+  }
 
   onSubmit() {
     console.log(this.signupForm);

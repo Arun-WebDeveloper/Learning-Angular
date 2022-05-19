@@ -46,6 +46,15 @@
             <option value="finished">Finished</option>-->
           </select>
         </div>
+        <div formArrayName="hobbies">
+          <h3>Please Enter your Hobbies</h3>
+          <button class="btn btn-success" type="button" (click)="addHobby()">Hobbies</button>
+          <div class="form-group" *ngFor="let hob of getControls();let i = index">
+            <br>
+          <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <br>
         <button type="submit" class="btn btn-primary" [disabled]="!projectForm.valid">Please Submit</button>
         <span class="help-block" style="color: red;" *ngIf="!projectForm.valid && projectForm.touched">This Form is Invalid ?</span>
       </form>
