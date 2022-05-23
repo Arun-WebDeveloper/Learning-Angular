@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-@Input() index:number
-  constructor() { }
+  @Input() index: number
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
 
+
+  }
+  onLoadPage() {
+    this.router.navigate(['/reactive'],{queryParams:{allowEdit:'1'},fragment:'loadingReachedReactive'})
+  }
 }

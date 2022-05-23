@@ -6,13 +6,16 @@ import { ReactiveComponent } from "./Learning-Forms/reactive/reactive.component"
 import { TemplateDrivenComponent } from "./Assignments/template-driven/template-driven.component";
 import { FormsComponent } from "./Learning-Forms/forms/forms.component";
 import { ReactiveFormsComponent } from "./Assignments/reactive-forms/reactive-forms.component";
+import { PipeComponent } from "./pipes/pipe.component";
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/forms', pathMatch: 'full' },
     { path: 'forms', component: FormsComponent },
     { path: 'reactive', component: ReactiveComponent },
+    { path: 'reactive/:id/:name', component: ReactiveComponent },
     { path: 'template-driven', component: TemplateDrivenComponent },
-    {path: 'reactive-form', component:ReactiveFormsComponent}
+    {path: 'reactive-form', component:ReactiveFormsComponent},
+    {path: 'pipes', component:PipeComponent}
 ]
 
 @NgModule({

@@ -28,9 +28,8 @@ export class ReactiveFormsComponent implements OnInit {
     //this.projectForm.statusChanges.subscribe((status) => console.log(status));
     // valueChanges
     // this.projectForm.valueChanges.subscribe((value)=>console.log(value));
-  }
-
-  //creating our own error as "Test"(custom validation)
+ }
+ //creating our own error as "Test"(custom validation)
   unwantedNames(control: FormControl): { [s: string]: boolean } {
     if ((control.value === 'Test')) {
       return { 'forbidden': true };

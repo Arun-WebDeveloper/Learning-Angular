@@ -11,6 +11,11 @@ import { AppRouting } from './app-routing.module';
 import { ReactiveComponent } from './Learning-Forms/reactive/reactive.component';
 import { ReactiveFormsComponent } from './Assignments/reactive-forms/reactive-forms.component';
 import { FormsComponent } from './Learning-Forms/forms/forms.component';
+import { PipeComponent } from './pipes/pipe.component';
+import { PipePipe } from './custom-pipes/pipe.pipe';
+import { Sorting } from './custom-pipes/sorting.pipe';
+import { ShortenPipe } from './custom-pipes/shorten.pipe';
+import { Reverse } from './custom-pipes/reversed.pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,14 @@ import { FormsComponent } from './Learning-Forms/forms/forms.component';
     HeaderComponent,
     FormsComponent,
     ReactiveComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    PipeComponent,
+    PipePipe,
+    Sorting,
+    ShortenPipe,
+    Reverse
+
+    
   ],
   imports: [
     BrowserModule,

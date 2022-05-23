@@ -117,6 +117,8 @@ genders = ['male', 'female'];
         'username': 'Anna',
       }
     });
+
+    
   }
   getControls() {
     return (<FormArray>this.signupForm.get('hobbies')).controls;

@@ -1,4 +1,3 @@
-=======================================================================================================================================
 # Forms: 
  This is an example of how a form look like a simple login form to submit the required details.
 Eg:
@@ -248,46 +247,3 @@ controls->userData->controls again->username->errors (nameIsForbidden:true)
 
 this.signUpForm.statusChanges.subscribe((status)=>console.log(status))
   }
-
-# Asynchronous validation
-Angular doesn't fire the asynchronous validators until every synchronous validation is satisfied. Since an asynchronous validation is resourceful (i.e. you would call some kind of server to do the validation), you shouldn't always initiate the validation process on every change made to the form control.
-syntax:
-anyName(control:FormControl):Promise<any>|Observable<any>{
-  const promise = new Promise<any>((resolve,reject)=>{
-    setTimeout(()=>{
-      if(control.value==="errorname"){
-        resolve({"name":true})
-      }else{
-        resolve(null)
-      }
-    },2000)
-  });
-  return promise;
-}
-after this method is implemented needs to be bind in form group in our profileForm.
-
-# Custom Validation (creating our own validation)
-Here is how you have defined inbuilt validators as required in Reactive forms. To add a custom validator you can define the method and add it to the validation’s array. Let’s add a custom validator which shows an error when & is entered in the username field.
-syntax:
-errorName(control:FormControl):{[s:string]:boolean}{
-  if(control.value === "Test"){
-    return{"error":true}
-  }
-  return null;
-}
-
-# statusChanges: Observable<any>;
-    
-     * Reports the update strategy of the `AbstractControl` (meaning
-     * the event on which the control updates itself).
-     * Possible values: `'change'` | `'blur'` | `'submit'`
-     * Default value: `'change'
-  Eg:
-    this.signupForm.statusChanges.subscribe((status)=>console.log(status));
-
-# valueChanges: Observable<any>;
-    
-     * A multicasting observable that emits an event every time the validation `status` of the control
-     * recalculates.
-  Eg:
-    this.signupForm.valueChanges.subscribe((value)=>console.log(status));
