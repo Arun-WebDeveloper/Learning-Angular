@@ -51,3 +51,37 @@ syntax:
 this.http.post('urlDatabaseLink/posts.json').subscribe(responseData =>{
     console.log(responseData)
 })
+# Delete A Request:
+Removes all the posts request
+Eg:
+Create a method in service and return that method dont subcribe and call it in your typescript then subscribe.
+deletePost(){
+    return this.http.delete("urlLink")
+}
+In the typescript file-
+clearPost(){
+    this.postService.deletePost().subscribe(()=>
+    //pass some message like
+    confirm('Posts has been Deleted');
+    )
+}
+# Adding Http headers and queryParams: To add httpheaders we can simple pass as an argument in any requests method same goes for params as well.Eg given below 
+
+headers: new HttpHeaders({ "Custom-Headers": "HttpHeaders" }),
+params: new HttpParams().set("params","loading"), - while using params set method needs to be used,another method for adding params is
+params: newParams
+let newParams = new HttpParams;
+newParams = newParams.append('print','pretty');
+newParams = newParams.append('custom','params');
+by using this alternative we can create as many custom queryParams on our own.
+
+
+# Interceptors:
+The Angular HTTP Interceptor is introduced along with the new HTTPClientModule. The Interceptor helps us to modify the HTTP Request by intercepting it before the Request is sent to the back end. The Interceptor can be useful for adding custom headers to the outgoing request, logging the incoming response, etc.
+
+# Create Intercerptor:
+ng generate interceptors 
+You can create multipe Interceptors and add in the providers at appModules.
+Eg:
+providers: [{ provide: HTTP_INTERCEPTORS, multi: true, useClass: AuthInterceptor },
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: LoggingInterceptor }],

@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+          <div class="form-group">
+            <label for="title">TITLE:</label>
+            <input type="text" class="form-control" id="title" required ngModel name="title" />
+          </div>
+          <div class="form-group">
+            <label for="content">CONTENT</label>
+            <textarea class="form-control" id="content" required ngModel name="content"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" (click)="submitDetails()" [disabled]="!postForm.valid">
+            Send Post
+          </button>&nbsp;
+          <!--<button type="submit" class="btn btn-success" (click)="submitDetails()">View Posts</button>-->
+        </form>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <button class="btn btn-primary" (click)="onFetchPosts()">
+          Fetch Posts
+        </button>
+        &nbsp;
+        <button class="btn btn-danger" [disabled]="loadedPosts.length < 1" (click)="onClearPosts()">
+          Clear Posts
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row" *ngIf="submitPosts">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <h4>New Post has been created ! </h4>
+        <p>Title: {{info.Title}}</p>
+        <p>Content: {{info.Content}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts available!</p>
+        <ul class="list-group" *ngIf="loadedPosts.length >= 1 &&!isFetching">
+          <li class="list-group-item" *ngFor="let post of loadedPosts">
+            <h3>{{post.content}}</h3>
+            <p>{{post.title}}</p>
+          </li>
+        </ul>
+        <p *ngIf="isFetching  && !error">Loading....</p>
+        <div class="alert alert-danger" *ngIf="error">
+          <h2>An Error Occurred?</h2>
+          <p>{{error}}</p>
+          <button class="btn btn-danger" (click)="handleError()"> Okay</button>  
+        </div>
+      </div>
+    </div>
+  </div>

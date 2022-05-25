@@ -17,4 +17,7 @@ export class HeaderComponent implements OnInit {
   onLoadPage() {
     this.router.navigate(['/reactive'],{queryParams:{allowEdit:'1'},fragment:'loadingReachedReactive'})
   }
+  onHttpPage(){
+    this.router.navigate(['/http'],{queryParams:{httpPageReq:'allRequestsAreDone'},fragment:'loadedAndImplementedHttp'})
+  }
 }
